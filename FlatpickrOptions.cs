@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Options;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -58,8 +59,30 @@ namespace FlatpickrBlazor
         /// <summary>
         /// The maximum date that a user can pick to (inclusive).
         /// </summary>
-        [JsonPropertyName("maxDate")]
+        [JsonPropertyName("maxDate_")]
         public DateTimeOffset? MaxDate { get; set; } = null;
+
+        private string maxdate;
+        [JsonPropertyName("maxDate")]
+        public string MaxDateString
+        {
+            get{
+                if(!string.IsNullOrEmpty(maxdate))
+                {
+                    return maxdate;
+                }
+                else if(MaxDate != null)
+                {
+                    return MaxDate.Value.ToString("dd-MM-yyyy");
+                }
+
+                return null;
+            }
+            set
+            {
+                maxdate = value;
+            }
+        }
 
         [JsonPropertyName("parseMaxDate")]
         public bool ParseMaxDate { get; set; } = false;
