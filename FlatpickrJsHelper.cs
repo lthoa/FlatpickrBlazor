@@ -20,7 +20,13 @@ namespace FlatpickrBlazor
         [JSInvokable]
         public void OnChange(DateTimeOffset[] dateTimes)
         {
-            DateTimes = new List<DateTimeOffset>(dateTimes);
+            DateTimes = new List<DateTimeOffset>();
+
+            foreach (var dt in dateTimes)
+            {
+                DateTimes.Add(DateTime.Parse(dt.ToString(), null, System.Globalization.DateTimeStyles.RoundtripKind));
+            }
+            
             _onChange?.Invoke(DateTimes);
         }
 
