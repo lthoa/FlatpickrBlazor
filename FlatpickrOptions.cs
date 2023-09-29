@@ -117,5 +117,9 @@ namespace FlatpickrBlazor
         /// <see href="https://flatpickr.js.org/examples/#flatpickr-external-elements"/>
         [JsonPropertyName("wrap")]
         public bool Wrap { get; set; } = false;
+
+
+        //[JsonPropertyName("onChange")]
+        //public bool OnChange { get; set; } = null;
     }
 }

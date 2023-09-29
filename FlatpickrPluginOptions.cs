@@ -24,5 +24,6 @@ namespace FlatpickrBlazor
 
         // set to a instance to use the monthSelectPlugin
         public MonthSelectOptions UseMonthSelectPlugin { get; set; } = null;
+        public bool UseWeekSelectPlugin { get; set; }
     }
 }

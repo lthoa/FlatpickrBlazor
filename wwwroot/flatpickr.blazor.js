@@ -8,6 +8,9 @@
         if (plugOpts.UseMonthSelectPlugin !== null) {
             opts.plugins.push(new monthSelectPlugin(plugOpts.UseMonthSelectPlugin));
         }
+        if (plugOpts.UseWeekSelectPlugin) {
+            opts.plugins.push(new weekSelect());
+        }
         opts.onChange = function (selectedDates, dateStr, instance) {
             return dotNetHelper.invokeMethodAsync("OnChange", selectedDates);
         };
